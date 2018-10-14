@@ -1,0 +1,16 @@
+db:
+  image: mysql/mysql-server:5.7
+  environment:
+    MYSQL_DATABASE: hustle
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_ROOT_HOST: '%'
+  ports:
+    - '3306:3306'
+
+main:
+  command: bash
+  build: .
+  volumes:
+    - .:/opt/code
+  links:
+    - db
